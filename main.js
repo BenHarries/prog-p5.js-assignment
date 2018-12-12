@@ -7,13 +7,17 @@ Daily Minimal.
 var planets = []; //changed to p5.js way of arrays
 var planetsB = [];
 var planetsT = [];
+var slider;
+var canvas;
 
 function setup() {
-  createCanvas(500, 500);
+  
+  canvas = createCanvas(500, 500);
   var planet1 = new Planet(); //makes new orbiting planet using class on other page 'Planet' (changed from Planet to var)
   planet1.s = 0.002; //***speed of orbit of new planet***
   planet1.r = 65; //*** radius of new orbiting planet ***
   planets.push(planet1);
+  slider = createSlider(0.0001, 0.004, 0.001)
 }
 
 var traceOrbit = 500; //affects the diameter of the orbit
@@ -30,20 +34,24 @@ function draw() {
 console.log(planets)
   for (p in planets) { //change the for loop
 	planet = planets[p]    
-console.log(planet)
 	planet.setCoords(millis(), traceOrbit, traceOrbit2);
     if (planet.overLapping()) {
-      planetsB.add(planet);
+      planetsB.push(planet);
     } else {
-      planetsT.add(planet);
+      planetsT.push(planet);
     }
   } //***holding the mouse down for a longer time gives you the mass of the planet***
   printHalfSun(false); //bottom half of sun
-  printTrace(); // *** line for planets to go around ***
-  for (planet in planetsT) {
+  printTrace(); // *** line for planets to go around **
+  console.log(planetsT)
+  console.log(planetsB)
+
+  for (f in planetsT) {
+    planet = planetsT[f]
     planet.display();
   }
-  for (planet in planetsB) {
+  for (j in planetsB) {
+    planet = planetsB[j]
     planet.display();
   }
   printHalfSun(true);
@@ -76,9 +84,11 @@ function printTrace() {
   ellipse(0, 0, traceOrbit, traceOrbit2);
 }
 
-function mouseIsPressed() {
+function mousePressed() {
+  //planets.clickedSolar();
+  console.log('mouse has been pressed on solar')
   var planet1 = new Planet(); //making a new planet
-  planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
+  planet1.s = random(slider.value()); //making the new planet have a random speed
   planet1.r = random(20, 70); //making the new planet have a random radius
   planets.push(planet1);
 }
