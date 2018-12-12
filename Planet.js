@@ -1,11 +1,19 @@
 
 class Planet {
-	constructor(x, y, r, s) {
+	constructor(x, y, radius, s, colour) {
 
   this.x = x;
   this.y = y;
-  this.r = r;
+  this.radius = radius;
   this.s = s;
+  this.colour = colour || 240;
+}
+
+setColour(colour){
+  this.colour = colour;
+}
+setRadius(radius){
+  this.radius = radius
 }
 
   setCoords(millis, rOrbit, rOrbit2) {
@@ -14,7 +22,7 @@ class Planet {
   }
   
   display() {
-    fill(240);
+    fill(this.colour);
     strokeWeight(5);
     stroke(0);
     ellipse(this.x, this.y, this.r, this.r);

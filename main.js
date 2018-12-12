@@ -7,9 +7,7 @@ Daily Minimal.
 var planets = []; //changed to p5.js way of arrays
 var planetsB = [];
 var planetsT = [];
-var slider;
 var canvas;
-
 function setup() {
   
   canvas = createCanvas(500, 500);
@@ -17,7 +15,6 @@ function setup() {
   planet1.s = 0.002; //***speed of orbit of new planet***
   planet1.r = 65; //*** radius of new orbiting planet ***
   planets.push(planet1);
-  slider = createSlider(0.0001, 0.004, 0.001)
 }
 
 var traceOrbit = 500; //affects the diameter of the orbit
@@ -59,6 +56,28 @@ console.log(planets)
 }
 
 
+document.addEventListener("DOMContentLoaded", function(){
+  var cc = document.getElementById("colour");
+  function changeColour(event){
+    let colour = document.getElementById("colour").value;
+    planet1.setColour(colour);
+  }
+
+  var r = document.getElementById("radius");
+  function changeRadius(event){
+    let radius = document.getElementbyId("radius").value;
+    planet1.setRadius(radius);
+  
+  }
+  cc.addEventListener("change", changeColour);
+  r.addEventListener("input", changeRadius);
+  var cf = document.getElementById("colour_form");
+  
+  cf.addEventListener("submit", function(event){
+    event.preventDefault()
+  });
+});
+
 function printHalfSun(top) {
   strokeWeight(4);
   if (top) { //outline of bottom hemispere of sun
@@ -88,8 +107,9 @@ function mousePressed() {
   //planets.clickedSolar();
   console.log('mouse has been pressed on solar')
   var planet1 = new Planet(); //making a new planet
-  planet1.s = random(slider.value()); //making the new planet have a random speed
-  planet1.r = random(20, 70); //making the new planet have a random radius
+  planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
+  planet1.r = random(20, 70);  //making the new planet have a random radius
+  planet1.colour = 240;
   planets.push(planet1);
 }
 
@@ -111,5 +131,4 @@ function makeNoise() {
   for (var i = 0; i < 15; i++) {
     fill(random(0, 255), 255);
     rect(random(-width, width/2), random(-height, height/2), 2, 2);
-  }
-}
+}}
