@@ -8,13 +8,15 @@ var planets = []; //changed to p5.js way of arrays
 var planetsB = [];
 var planetsT = [];
 var canvas;
+var planet1;
+
 function setup() {
   
   canvas = createCanvas(500, 500);
-  var planet1 = new Planet(); //makes new orbiting planet using class on other page 'Planet' (changed from Planet to var)
-  planet1.s = 0.002; //***speed of orbit of new planet***
-  planet1.r = 65; //*** radius of new orbiting planet ***
-  planets.push(planet1);
+  planet0 = new Planet(); //makes new orbiting planet using class on other page 'Planet' (changed from Planet to var)
+  planet0.s = 0.002; //***speed of orbit of new planet***
+  planet0.r = 65; //*** radius of new orbiting planet ***
+  planets.push(planet0);
 }
 
 var traceOrbit = 500; //affects the diameter of the orbit
@@ -28,7 +30,6 @@ function draw() {
   background(223); //*** colour of the background ***
   planetsB = [];
   planetsT = [];
-console.log(planets)
   for (p in planets) { //change the for loop
 	planet = planets[p]    
 	planet.setCoords(millis(), traceOrbit, traceOrbit2);
@@ -40,8 +41,7 @@ console.log(planets)
   } //***holding the mouse down for a longer time gives you the mass of the planet***
   printHalfSun(false); //bottom half of sun
   printTrace(); // *** line for planets to go around **
-  console.log(planetsT)
-  console.log(planetsB)
+  
 
   for (f in planetsT) {
     planet = planetsT[f]
@@ -55,12 +55,32 @@ console.log(planets)
   makeNoise();
 }
 
+document.addEventListener("keydown", checkKeyPressed2, false);
+
+function checkKeyPressed2(evt) {
+    if (evt.keyCode == "13") { 
+    newPlanet();
+    }
+}
+
+function newPlanet() {
+  
+  console.log('mouse has been pressed on solar')
+  planet1 = new Planet(); //making a new planet
+  planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
+  planet1.r = random(20, 70);  //making the new planet have a random radius
+  planets.push(planet1);
+}
+
+
 
 document.addEventListener("DOMContentLoaded", function(){
-  var cc = document.getElementById("colour");
+    var cc = document.getElementById("colour");
+    
   function changeColour(event){
     let colour = document.getElementById("colour").value;
     planet1.setColour(colour);
+      
   }
 
   var r = document.getElementById("radius");
@@ -103,17 +123,18 @@ function printTrace() {
   ellipse(0, 0, traceOrbit, traceOrbit2);
 }
 
-function mousePressed() {
-  //planets.clickedSolar();
-  console.log('mouse has been pressed on solar')
-  var planet1 = new Planet(); //making a new planet
-  planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
-  planet1.r = random(20, 70);  //making the new planet have a random radius
-  planet1.colour = 240;
-  planets.push(planet1);
+
+
+
+document.addEventListener("keydown", checkKeyPressed, false);
+
+function checkKeyPressed(evt) {
+    if (evt.keyCode == "32") { 
+    Reset();
+    }
 }
 
-function keyPressed(){
+function Reset(){
   planets = []; //resets to no planets when a key is pressed by making the planets array again
 	//***this use of <> can be changed to the way of making arrays in java script which includes [] and var***
 }
