@@ -15,14 +15,17 @@ function setup() {
   canvas = createCanvas(500, 500);
   planet0 = new Planet(); //makes new orbiting planet using class on other page 'Planet' (changed from Planet to var)
   planet0.s = 0.002; //***speed of orbit of new planet***
-  planet0.r = 65; //*** radius of new orbiting planet ***
+  planet0.radius = 25; //*** radius of new orbiting planet ***
   planets.push(planet0);
 }
 
 var traceOrbit = 500; //affects the diameter of the orbit
 var traceOrbit2 = 100; //affects the orientation/angle of the orbit
-var rSun = 250; //*** affects radius of the 'sun' ***
+var rSun = 25; //*** affects radius of the 'sun' ***
 var i;
+
+var planet_color = "white";
+var planet_radius = 20;
 
 function draw() {
   translate(width/2, height/2); //location of the solar system
@@ -64,39 +67,17 @@ function checkKeyPressed2(evt) {
 }
 
 function newPlanet() {
+    
+    planet_color = document.getElementById("colour").value;
+    planet_radius = parseInt(document.getElementById("radius").value);
   
-  planet1 = new Planet(); //making a new planet
-  planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
-  //planet1.r = random(20, 70);  //making the new planet have a random radius
-  planets.push(planet1);
+    planet1 = new Planet(); //making a new planet
+    planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
+    //planet1.r = random(20, 70);  //making the new planet have a random radius
+    planet.setRadius(planet_radius)
+    planet.setColour(planet_color)
+    planets.push(planet1);
 }
-
-
-
-document.addEventListener("DOMContentLoaded", function(){
-    
-    var cc = document.getElementById("colour");
-function changeColour(event){
-    let colour = document.getElementById("colour").value;
-    planet1.setColour(colour);
-      
-  }
-    
-
-    var r = document.getElementById("radius");
-function changeRadius(event){
-    let radius = document.getElementById("radius").value;
-    planet1.setRadius(radius);
-  
-  }
-  cc.addEventListener("change", changeColour);
-  r.addEventListener("change", changeRadius);
-  //var cf = document.getElementById("colour_form");
-  
-  //cf.addEventListener("submit", function(event){
-    //event.preventDefault()
-  //});
-});
 
 function printHalfSun(top) {
   strokeWeight(4);
@@ -122,9 +103,6 @@ function printTrace() {
   strokeWeight(4); //outline of black padding of trace 
   ellipse(0, 0, traceOrbit, traceOrbit2);
 }
-
-
-
 
 document.addEventListener("keydown", checkKeyPressed, false);
 
