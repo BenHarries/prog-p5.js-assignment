@@ -12,11 +12,12 @@ var planet1;
 
 function setup() {
   
-  canvas = createCanvas(500, 500);
-  planet0 = new Planet(); //makes new orbiting planet using class on other page 'Planet' (changed from Planet to var)
-  planet0.s = 0.002; //***speed of orbit of new planet***
-  planet0.radius = 25; //*** radius of new orbiting planet ***
-  planets.push(planet0);
+    canvas = createCanvas(500, 500);
+//    canvas.position(100, 0);
+    planet0 = new Planet(); //makes new orbiting planet using class on other page 'Planet' (changed from Planet to var)
+    planet0.s = 0.002; //***speed of orbit of new planet***
+    planet0.radius = 25; //*** radius of new orbiting planet ***
+    planets.push(planet0);
 }
 
 var traceOrbit = 500; //affects the diameter of the orbit
