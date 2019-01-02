@@ -65,37 +65,37 @@ function checkKeyPressed2(evt) {
 
 function newPlanet() {
   
-  console.log('mouse has been pressed on solar')
   planet1 = new Planet(); //making a new planet
   planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
-  planet1.r = random(20, 70);  //making the new planet have a random radius
+  //planet1.r = random(20, 70);  //making the new planet have a random radius
   planets.push(planet1);
 }
 
 
 
 document.addEventListener("DOMContentLoaded", function(){
-    var cc = document.getElementById("colour");
     
-  function changeColour(event){
+    var cc = document.getElementById("colour");
+function changeColour(event){
     let colour = document.getElementById("colour").value;
     planet1.setColour(colour);
       
   }
+    
 
-  var r = document.getElementById("radius");
-  function changeRadius(event){
-    let radius = document.getElementbyId("radius").value;
+    var r = document.getElementById("radius");
+function changeRadius(event){
+    let radius = document.getElementById("radius").value;
     planet1.setRadius(radius);
   
   }
   cc.addEventListener("change", changeColour);
-  r.addEventListener("input", changeRadius);
-  var cf = document.getElementById("colour_form");
+  r.addEventListener("change", changeRadius);
+  //var cf = document.getElementById("colour_form");
   
-  cf.addEventListener("submit", function(event){
-    event.preventDefault()
-  });
+  //cf.addEventListener("submit", function(event){
+    //event.preventDefault()
+  //});
 });
 
 function printHalfSun(top) {

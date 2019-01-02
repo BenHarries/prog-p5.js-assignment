@@ -3,7 +3,7 @@ class Planet {
     constructor(x, y, radius, s, colour) {
         this.x = x;
         this.y = y;
-        this.radius = radius;
+        this.radius = radius || 70;
         this.s = s;
         this.colour = colour || 240;
     }
@@ -12,7 +12,7 @@ class Planet {
         this.colour = colour;
     }
     setRadius(radius){
-        this.radius = radius
+        this.radius = radius;
     }
 
     setCoords(millis, rOrbit, rOrbit2) {
@@ -24,7 +24,7 @@ class Planet {
         fill(this.colour);
         strokeWeight(5);
         stroke(0);
-        ellipse(this.x, this.y, this.r, this.r);
+        ellipse(this.x, this.y, this.radius, this.radius);
   }
   
     overLapping() {
