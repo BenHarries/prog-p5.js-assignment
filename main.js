@@ -8,25 +8,19 @@ var planets = []; //changed to p5.js way of arrays
 var planetsB = [];
 var planetsT = [];
 var canvas;
-var planet1;
+
+var traceOrbit = 500; //affects the diameter of the orbit
+var traceOrbit2 = 100; //affects the orientation/angle of the orbit
+var rSun = 300; //*** affects radius of the 'sun' ***
+var i;
 
 function setup() {
   
     canvas = createCanvas(500, 500);
 //    canvas.position(100, 0);
-    planet0 = new Planet(); //makes new orbiting planet using class on other page 'Planet' (changed from Planet to var)
-    planet0.s = 0.002; //***speed of orbit of new planet***
-    planet0.radius = 25; //*** radius of new orbiting planet ***
-    planets.push(planet0);
+    planet = new Planet(0, 0, 40, 0.002, "red");
+    planets.push(planet);
 }
-
-var traceOrbit = 500; //affects the diameter of the orbit
-var traceOrbit2 = 100; //affects the orientation/angle of the orbit
-var rSun = 25; //*** affects radius of the 'sun' ***
-var i;
-
-var planet_color = "white";
-var planet_radius = 20;
 
 function draw() {
   translate(width/2, height/2); //location of the solar system
@@ -59,24 +53,22 @@ function draw() {
   makeNoise();
 }
 
-document.addEventListener("keydown", checkKeyPressed2, false);
+document.addEventListener("keydown", enterPressed, false);
 
-function checkKeyPressed2(evt) {
+function enterPressed(evt) {
     if (evt.keyCode == "13") { 
-    newPlanet();
+        newPlanet();
     }
 }
 
 function newPlanet() {
     
-    planet_color = document.getElementById("colour").value;
-    planet_radius = parseInt(document.getElementById("radius").value);
+    var planet_color = document.getElementById("colour").value;
+    var planet_radius = parseInt(document.getElementById("radius").value);
+    var planet_speed = random(0.0001, 0.004); //making the new planet have a random speed
   
-    planet1 = new Planet(); //making a new planet
-    planet1.s = random(0.0001, 0.004); //making the new planet have a random speed
-    //planet1.r = random(20, 70);  //making the new planet have a random radius
-    planet.setRadius(planet_radius)
-    planet.setColour(planet_color)
+    planet1 = new Planet(0,0, planet_radius, planet_speed, planet_color); //making a new planet
+    
     planets.push(planet1);
 }
 
@@ -105,9 +97,9 @@ function printTrace() {
   ellipse(0, 0, traceOrbit, traceOrbit2);
 }
 
-document.addEventListener("keydown", checkKeyPressed, false);
+document.addEventListener("keydown", spacebarPressed, false);
 
-function checkKeyPressed(evt) {
+function spacebarPressed(evt) {
     if (evt.keyCode == "32") { 
     Reset();
     }
