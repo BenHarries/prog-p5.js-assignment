@@ -52,12 +52,17 @@ class Solar {
     noFill ();
     stroke (233);
     strokeWeight (12); //outline grey padding of trace
-    ellipse (0, 0, traceOrbit, traceOrbit2);
+    ellipse (0, 0, this.traceOrbit, this.traceOrbit2);
 
     noFill ();
     stroke (0);
     strokeWeight (4); //outline of black padding of trace
-    ellipse (0, 0, traceOrbit, traceOrbit2);
+    ellipse (0, 0, this.traceOrbit, this.traceOrbit2);
+  }
+
+  reset () {
+    this.planets = []; //resets to no planets when a key is pressed by making the planets array again
+    //***this use of <> can be changed to the way of making arrays in java script which includes [] and var***
   }
 
   makeNoise () {
@@ -82,7 +87,6 @@ class Solar {
   }
 
   newPlanet () {
-    console.log ('newPlanet');
     var planet_color = document.getElementById ('colour').value;
     var planet_radius = parseInt (document.getElementById ('radius').value);
     var planet_speed = random (0.0001, 0.004); //making the new planet have a random speed
@@ -98,12 +102,12 @@ class Solar {
       //outline of bottom hemispere of sun
       fill (0);
       stroke (233);
-      arc (0, 0, rSun, rSun, PI, TWO_PI);
+      arc (0, 0, this.rSun, this.rSun, PI, TWO_PI);
     } else {
       //outline of bottom hemisphere of sun
       fill (0);
       stroke (223);
-      arc (0, -0.3, rSun, rSun, 0, PI);
+      arc (0, -0.3, this.rSun, this.rSun, 0, PI);
     }
   }
 }
