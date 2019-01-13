@@ -1,14 +1,13 @@
 class Solar {
-  constructor () {
+  constructor (traceOrbit = 500, traceOrbit2 = 100, rSun = 300) {
     this.planets = []; //changed to p5.js way of arrays
     this.planetsB = [];
     this.planetsT = [];
     this.canvas;
 
-    this.traceOrbit = 500; //affects the diameter of the orbit
-    this.traceOrbit2 = 100; //affects the orientation/angle of the orbit
-    this.rSun = 300; //*** affects radius of the 'sun' ***
-    this.i;
+    this.traceOrbit = traceOrbit; //affects the diameter of the orbit
+    this.traceOrbit2 = traceOrbit2; //affects the orientation/angle of the orbit
+    this.rSun = rSun; //*** affects radius of the 'sun' ***
   }
   setup () {
     this.canvas = createCanvas (500, 500);

@@ -1,7 +1,7 @@
 /*
-
-Based on: http://www.dailyminimal.com/post/172999683369/no-142-a-new-geometric-design-every-day
-Daily Minimal.
+  Author: Ben Kelvin Harries
+  Adapted from Orbits by Santiago Fiorino https://www.openprocessing.org/sketch/567018 
+  Licence: Creative Commons Attribution ShareAlike https://creativecommons.org/licenses/by-sa/3.0/
 
 */
 
