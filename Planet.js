@@ -1,5 +1,6 @@
 class Planet {
-  constructor (x, y, radius, speed, colour) {
+  constructor (canvas, x, y, radius, speed, colour) {
+    this.canvas = canvas;
     this.x = x;
     this.y = y;
     this.radius = radius || 70;
