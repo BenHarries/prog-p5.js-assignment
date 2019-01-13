@@ -1,5 +1,11 @@
 class Solar {
-  constructor (traceOrbit = 500, traceOrbit2 = 100, rSun = 300) {
+  constructor (
+    width = 500,
+    height = 500,
+    traceOrbit = 500,
+    traceOrbit2 = 100,
+    rSun = 300
+  ) {
     this.planets = []; //changed to p5.js way of arrays
     this.planetsB = [];
     this.planetsT = [];
@@ -11,14 +17,14 @@ class Solar {
   }
   setup () {
     this.canvas = createCanvas (500, 500);
-    var planet = new Planet (0, 0, 40, 0.002, 'red');
+    var planet = new Planet (this.canvas, 0, 0, 40, 0.002, 'red');
     this.planets.push (planet);
   }
 
   draw () {
-    translate (width / 2, height / 2); //location of the solar system
-    rotate (radians (-25)); //rotation of whole solar system
-    background (223); //*** colour of the background ***
+    this.canvas.translate (width / 2, height / 2); //location of the solar system
+    this.canvas.rotate (radians (-25)); //rotation of whole solar system
+    this.canvas.background (223); //*** colour of the background ***
     this.planetsB = [];
     this.planetsT = [];
 
@@ -90,7 +96,14 @@ class Solar {
     var planet_radius = parseInt (document.getElementById ('radius').value);
     var planet_speed = random (0.0001, 0.004); //making the new planet have a random speed
 
-    var planet1 = new Planet (0, 0, planet_radius, planet_speed, planet_color); //making a new planet
+    var planet1 = new Planet (
+      this.canvas,
+      0,
+      0,
+      planet_radius,
+      planet_speed,
+      planet_color
+    ); //making a new planet
 
     this.planets.push (planet1);
   }
