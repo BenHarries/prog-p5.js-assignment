@@ -27,7 +27,7 @@ class Planet {
     display() {
         fill(this.colour);
         strokeWeight(5);
-        stroke(0);
+        stroke(0);/**/
         ellipse(this.x, this.y, this.radius, this.radius);
     }
 
