@@ -10,6 +10,7 @@ class Solar {
     this.planetsB = [];
     this.planetsT = [];
     this.canvas;
+    this.g;
 
     this.traceOrbit = traceOrbit; //affects the diameter of the orbit
     this.traceOrbit2 = traceOrbit2; //affects the orientation/angle of the orbit
@@ -17,40 +18,74 @@ class Solar {
   }
   setup () {
     this.canvas = createCanvas (500, 500);
+    this.g = createGraphics (500, 500);
+    //this.solarside =
     var planet = new Planet (this.canvas, 0, 0, 40, 0.002, 'red');
     this.planets.push (planet);
   }
 
-  draw () {
-    this.canvas.translate (width / 2, height / 2); //location of the solar system
-    this.canvas.rotate (radians (-25)); //rotation of whole solar system
-    this.canvas.background (223); //*** colour of the background ***
-    this.planetsB = [];
-    this.planetsT = [];
+  draw (g) {
+    if (g) {
+      this.g.translate (width / 2, height / 2); //location of the solar system
+      this.g.rotate (radians (-25)); //rotation of whole solar system
+      this.g.background (223); //*** colour of the background ***
+      this.planetsB = [];
+      this.planetsT = [];
 
-    for (var p in this.planets) {
-      //change the for loop
-      var planet = this.planets[p];
-      planet.setCoords (millis (), this.traceOrbit, this.traceOrbit2);
-      if (planet.overLapping ()) {
-        this.planetsB.push (planet);
-      } else {
-        this.planetsT.push (planet);
+      for (var p in this.planets) {
+        //change the for loop
+        var planet = this.planets[p];
+        planet.setCoords (millis (), this.traceOrbit, this.traceOrbit2);
+        if (planet.overLapping ()) {
+          this.planetsB.push (planet);
+        } else {
+          this.planetsT.push (planet);
+        }
+      } //***holding the mouse down for a longer time gives you the mass of the planet***
+      this.printHalfSun (false); //bottom half of sun
+      this.printTrace (); // *** line for planets to go around **
+
+      for (var f in this.planetsT) {
+        var planet = this.planetsT[f];
+        planet.display ();
       }
-    } //***holding the mouse down for a longer time gives you the mass of the planet***
-    this.printHalfSun (false); //bottom half of sun
-    this.printTrace (); // *** line for planets to go around **
+      for (var j in this.planetsB) {
+        var planet = this.planetsB[j];
+        planet.display ();
+      }
+      this.printHalfSun (true);
+      this.makeNoise ();
+    } else {
+      this.canvas.translate (width / 2, height / 2); //location of the solar system
+      this.canvas.rotate (radians (-25)); //rotation of whole solar system
+      this.canvas.background (223); //*** colour of the background ***
+      this.planetsB = [];
+      this.planetsT = [];
 
-    for (var f in this.planetsT) {
-      var planet = this.planetsT[f];
-      planet.display ();
+      for (var p in this.planets) {
+        //change the for loop
+        var planet = this.planets[p];
+        planet.setCoords (millis (), this.traceOrbit, this.traceOrbit2);
+        if (planet.overLapping ()) {
+          this.planetsB.push (planet);
+        } else {
+          this.planetsT.push (planet);
+        }
+      } //***holding the mouse down for a longer time gives you the mass of the planet***
+      this.printHalfSun (false); //bottom half of sun
+      this.printTrace (); // *** line for planets to go around **
+
+      for (var f in this.planetsT) {
+        var planet = this.planetsT[f];
+        planet.display ();
+      }
+      for (var j in this.planetsB) {
+        var planet = this.planetsB[j];
+        planet.display ();
+      }
+      this.printHalfSun (true);
+      this.makeNoise ();
     }
-    for (var j in this.planetsB) {
-      var planet = this.planetsB[j];
-      planet.display ();
-    }
-    this.printHalfSun (true);
-    this.makeNoise ();
   }
 
   printTrace () {
@@ -91,7 +126,7 @@ class Solar {
     }
   }
 
-  newPlanet () {
+  newPlanet (g) {
     var planet_color = document.getElementById ('colour').value;
     var planet_radius = parseInt (document.getElementById ('radius').value);
     var planet_speed = random (0.0001, 0.004); //making the new planet have a random speed

@@ -10,7 +10,6 @@ var solar;
 function setup () {
   solar = new Solar ();
   solar.setup ();
-  solar.draw ();
 }
 
 function draw () {
