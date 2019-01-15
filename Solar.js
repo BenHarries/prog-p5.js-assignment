@@ -15,6 +15,8 @@ class Solar {
     this.traceOrbit = traceOrbit; //affects the diameter of the orbit
     this.traceOrbit2 = traceOrbit2; //affects the orientation/angle of the orbit
     this.rSun = rSun; //*** affects radius of the 'sun' ***
+    console.log (this);
+
   }
   setup () {
     this.canvas = createCanvas (500, 500);
