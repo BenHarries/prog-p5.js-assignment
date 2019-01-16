@@ -1,9 +1,12 @@
-# Methods and Parameters in my sketch 'Orbits'
+Author: Ben Kelvin Harries
+  Adapted from Orbits by Santiago Fiorino https://www.openprocessing.org/sketch/567018 
+  Licence: Creative Commons Attribution ShareAlike https://creativecommons.org/licenses/by-sa/3.0/
 
+# Methods and Parameters in my sketch 'Orbits'
+(my original code began with one class already for just the 'Planet's I went on to make the whole 'Solar' system a class)
 ## In my `class Solar`
 
-- `constructor`: Takes no arguments and defines the starting environment:
-
+- `constructor`: It takes the parameters width, height, traceOrbit, traceOrbit2 and rSun with their respective values as defaults to be referenced by the methods below. It then sets up 3 arrays (planets, planetsB and planets T) for the object (in this case 'solar') which will contain the planets which are created by the user.
 
 - `setup`: Takes no arguments and defines the starting environment:
     - A canvas of width and height 500 
@@ -25,13 +28,13 @@ The other parameters are `speed` (set elsewhere as a value between 0.0004 and 0.
 
 ## In `class Planet`
 
-- `constructor`: 
+- `constructor`: takes the parameter `x, y, radius, speed, colour` which are the x and y coordiates, the speed and colour of the planet object defined by the class Planet
                                                             
-- `getColour` and `setColour`: defines my computed property 'colour' and then allows planet.colour to have this colour.
+- `getColour` and `setColour`: defines my computed property 'colour' and then allows planet.colour to have this colour. Checks this is right kind of property.
 
-- `getRadius` and `setRadius`: "        "   "       "       'radius' and then allows planet.radius to have this radius
+- `getRadius` and `setRadius`: "        "   "       "       'radius' and then allows planet.radius to have this radius. Checks this is right kind of property.
 
-- `getSpeed` and `setSpeed`:    "        "   "       "       'speed' and then allows planet.speed to have this speed
+- `getSpeed` and `setSpeed`:    "        "   "       "       'speed' and then allows planet.speed to have this speed. Checks this is right kind of property.
 
 (property returned by get... and becomes argument for set...)
 
@@ -40,3 +43,7 @@ The other parameters are `speed` (set elsewhere as a value between 0.0004 and 0.
 - `display`: global method that is the most important as it creates the actual circle with the right this.colour from the constructor
 
 - `overLapping`: checks whether there are two Planets overlapping and send them to a different array so they swapp arrangements
+
+
+# Explanation of Example
+- Check out the Video: ![](Explanation.gif)
