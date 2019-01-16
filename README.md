@@ -46,4 +46,5 @@ The other parameters are `speed` (set elsewhere as a value between 0.0004 and 0.
 
 
 # Explanation of Example
-- Check out the Video: ![](Explanation.gif)
+*Check the explanatory gif*
+![](Explanation.gif)
