@@ -1,8 +1,8 @@
-Author: Ben Kelvin Harries
+_Author:_ Ben Harries
 
-Adapted from Orbits by Santiago Fiorino https://www.openprocessing.org/sketch/567018
+Adapted from Orbits by **Santiago Fiorino** https://www.openprocessing.org/sketch/567018
 
-Licence: Creative Commons Attribution ShareAlike https://creativecommons.org/licenses/by-sa/3.0/legalcode
+_Licence:_ Creative Commons Attribution ShareAlike https://creativecommons.org/licenses/by-sa/3.0/legalcode
 
 # Methods and Parameters in my sketch 'Orbits'
 
@@ -16,7 +16,7 @@ Licence: Creative Commons Attribution ShareAlike https://creativecommons.org/lic
   - A canvas of width and height 500
   - An optional graphic/texture of the same dimension
   - A first 'Planet object 'planet'' which has parameters of colour: "red", radius: 40, speed: 0.002
-- `draw`: is a method that performs all the displaying of the solar sytem as well as the 'noise' that is on top of the canvas (it may take the _parameter_ `g` in which case it draws onto the graphic/texture#### called `g` instead of the canvas). This `draw` is called by the `function draw` in main.js so that when draw is constantly rendering my draw in the class solar is always being called.
+- `draw`: is a method that performs all the displaying of the solar system as well as the 'noise' that is on top of the canvas (it may take the _parameter_ `g` in which case it draws onto the graphic/texture called `g` instead of the canvas). This `draw` is called by the `function draw` in main.js so that when draw is constantly rendering my draw in the class solar is always being called.
 
 - `printTrace`: Takes no arguments and creates the 'orbit ring'
 

@@ -7,7 +7,7 @@ class Planet {
     this.colour = colour || "green";
   }
 
-  getColour() {
+  getColour() {                           //get and set methods for colour, radius and speed
     return this.colour;
   }
 
