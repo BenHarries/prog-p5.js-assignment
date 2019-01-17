@@ -6,21 +6,17 @@ class Solar {
     traceOrbit2 = 100,
     rSun = 300
   ) {
-    this.planets = []; //changed to p5.js way of arrays
+    this.planets = [];
     this.planetsB = [];
     this.planetsT = [];
 
-    this.traceOrbit = traceOrbit; //affects the diameter of the orbit
-    this.traceOrbit2 = traceOrbit2; //affects the orientation/angle of the orbit
+    this.traceOrbit = traceOrbit; //the diameter of the orbit
+    this.traceOrbit2 = traceOrbit2; //the orientation/angle of the orbit
     this.rSun = rSun;
     console.log(this);
   }
   setup() {
-    //this.canvas = createCanvas (windowWidth, windowHeight, WEBGL);
-    //this.g = createGraphics (400, 400);
-    // this.graphics = createGraphics (400, 400);
-    // this.graphics.background (25);
-    var planet = new Planet(0, 0, 40, 0.002, 'white');
+    var planet = new Planet(0, 0, 40, 0.002, "white");
     this.planets.push(planet);
   }
 
@@ -28,11 +24,10 @@ class Solar {
     if (g) {
       g.translate(0.5, 0.5); //location of the solar system
       g.rotate(radians(-25)); //rotation of whole solar system
-      this.planetsB = [];
-      this.planetsT = [];
+      this.planetsB = [];//array of planets
+      this.planetsT = [];//array of planets
 
       for (var p in this.planets) {
-        //change the for loop
         var planet = this.planets[p];
         planet.setCoords(millis(), this.traceOrbit, this.traceOrbit2);
         if (planet.overLapping()) {
@@ -40,10 +35,10 @@ class Solar {
         } else {
           this.planetsT.push(planet);
         }
-      } //***holding the mouse down for a longer time gives you the mass of the planet***
+      }
       this.printHalfSun(false, g); //bottom half of sun
-      this.printTrace(g); // *** line for planets to go around **
-
+      this.printTrace(g); //line for planets to go around
+      //displaying the planets in both arrays of planets
       for (var f in this.planetsT) {
         var planet = this.planetsT[f];
         planet.display(g);
@@ -54,17 +49,16 @@ class Solar {
       }
       this.printHalfSun(true, g);
 
-      this.makeNoise(g);
+      this.makeNoise(g); // makes the crackly effect on top of the sketch
 
-      background('aliceblue');
+      background("aliceblue");
       rotateX(frameCount * 0.001);
-      //rotateY(frameCount * 0.001);
       texture(g);
-      box(800);
-    } else {
+      box(800); // my 3D primitive object of choice
+    } else { // when g is not passed through to the draw method (hence draws straight onto the canvas)
       translate(width / 2, height / 2); //location of the solar system
       rotate(radians(-25)); //rotation of whole solar system
-      background('AliceBlue'); //*** colour of the background ***
+      background("AliceBlue");
       this.planetsB = [];
       this.planetsT = [];
 
@@ -96,7 +90,7 @@ class Solar {
 
   printTrace(g) {
     if (g) {
-      g.noFill();
+      g.noFill(); //eslint says that the the method is unresolved but it just doesnt know these p5 methods I think
       g.stroke(233);
       g.strokeWeight(12); //outline grey padding of trace
       g.ellipse(0, 0, this.traceOrbit, this.traceOrbit2);
@@ -128,17 +122,6 @@ class Solar {
       g.rotate(radians(25));
       g.noStroke();
       g.strokeWeight(1);
-      // for (var i = -width / 2; i < width / 2 - 1; i += 5) {
-      //   for (var j = -height / 2; j < height / 2 - 1; j += 5) {
-      //     fill (random (100, 255), random (20, 40));
-      //     rect (
-      //       random (i - 5, i),
-      //       random (j - 5, j),
-      //       random (1, 2),
-      //       random (1, 2)
-      //     );
-      //   }
-      // }
       for (var i = 0; i < 15; i++) {
         g.fill(random(0, 255), 255);
         g.rect(random(-width, width / 2), random(-height, height / 2), 2, 2);
@@ -147,17 +130,6 @@ class Solar {
       rotate(radians(25));
       noStroke();
       strokeWeight(1);
-      // for (var i = -width / 2; i < width / 2 - 1; i += 5) {
-      //   for (var j = -height / 2; j < height / 2 - 1; j += 5) {
-      //     fill (random (100, 255), random (20, 40));
-      //     rect (
-      //       random (i - 5, i),
-      //       random (j - 5, j),
-      //       random (1, 2),
-      //       random (1, 2)
-      //     );
-      //   }
-      // }
       for (var i = 0; i < 15; i++) {
         fill(random(0, 255), 255);
         rect(random(-width, width / 2), random(-height, height / 2), 2, 2);
@@ -166,8 +138,8 @@ class Solar {
   }
 
   newPlanet() {
-    var planet_color = document.getElementById('colour').value;
-    var planet_radius = parseInt(document.getElementById('radius').value);
+    var planet_color = document.getElementById("colour").value;
+    var planet_radius = parseInt(document.getElementById("radius").value);
     var planet_speed = random(0.0001, 0.004); //making the new planet have a random speed
 
     var planet1 = new Planet(0, 0, planet_radius, planet_speed, planet_color); //making a new planet

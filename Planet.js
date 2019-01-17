@@ -4,7 +4,7 @@ class Planet {
     this.y = y;
     this.radius = radius || 70;
     this.speed = speed || 0.0001;
-    this.colour = colour || 'green';
+    this.colour = colour || "green";
   }
 
   getColour() {
@@ -32,8 +32,8 @@ class Planet {
   }
 
   setCoords(millis, rOrbit, rOrbit2) {
-    this.x = sin(millis * this.speed) * rOrbit / 2;
-    this.y = cos(millis * this.speed) * rOrbit2 / 2;
+    this.x = (sin(millis * this.speed) * rOrbit) / 2;
+    this.y = (cos(millis * this.speed) * rOrbit2) / 2;
   }
 
   display(g) {
