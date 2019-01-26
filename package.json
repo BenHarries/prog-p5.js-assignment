@@ -1,0 +1,22 @@
+{
+  "name": "ben",
+  "version": "1.0.0",
+  "description": "ben",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenHarries/prog-p5.js-assignment.git"
+  },
+  "author": "ben",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenHarries/prog-p5.js-assignment/issues"
+  },
+  "homepage": "https://github.com/BenHarries/prog-p5.js-assignment#readme",
+  "devDependencies": {
+    "eslint-config-recommended": "^4.0.0"
+  }
+}
