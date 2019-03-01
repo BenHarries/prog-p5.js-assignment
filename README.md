@@ -1,3 +1,11 @@
+_About:_ Refactored a p5.js sketch to a reusable object and extended scope
+
+# Explanation of Example
+
+_Check the explanatory gif_
+
+![](Explanation.gif)
+
 _Author:_ Ben Harries
 
 Adapted from Orbits by **Santiago Fiorino** https://www.openprocessing.org/sketch/567018
@@ -46,8 +54,4 @@ _Licence:_ Creative Commons Attribution ShareAlike https://creativecommons.org/l
 
 - `overLapping`: checks whether there are two Planets overlapping and send them to a different array so they swapp arrangements
 
-# Explanation of Example
 
-_Check the explanatory gif_
-
-![](Explanation.gif)
